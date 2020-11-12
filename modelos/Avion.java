@@ -1,6 +1,5 @@
 package modelos;
-
-import java.util.concurrent.*;
+// import java.util.concurrent.*;
 
 public class Avion extends Thread {
     private String id;
@@ -8,18 +7,23 @@ public class Avion extends Thread {
     private String nombre;
     private String operacion;
     private double velocidad;
-    // private TorreControl torreControl;
+    private TorreControl torreControl;
 
-    public Avion(String id, int capacidad, String nombre, String operacion, double velocidad) {
+    public Avion(String id, int capacidad, String nombre, String operacion, double velocidad, TorreControl torreControl) {
         this.id = id;
         this.capacidad = capacidad;
         this.nombre = nombre;
         this.operacion = operacion;
         this.velocidad = velocidad;
+        this.torreControl = torreControl;
+    }
+
+    public void setTorreControl(TorreControl torreControl){
+        this.torreControl = torreControl;
     }
 
     public void run() {
-        // this.torreControl.solicitarPista(this);
+        this.torreControl.solicitarPista(this);
     }
 
     public String getID() {

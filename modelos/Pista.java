@@ -1,36 +1,41 @@
 package modelos;
 
 import java.util.concurrent.*;
-/**
- * Pista
- */
+
 public class Pista {
-    private final int id;
-    private final int tiempoReservado;
+    private final String id;
     private Semaphore mutex;
     
-    public Pista(int id){
+    public Pista(String id){
         this.id = id;
-        this.tiempoReservado = 0;
         this.mutex = new Semaphore(1);
     }
 
+    public Semaphore getMutex(){
+        return this.mutex;
+    }
+
     public void ocuparPista(Avion avion){
+        //aún no se sabe donde aumentar
         try {
-            this.mutex.acquire();
-            // Sección critica
             
+            this.mutex.acquire();
+
+            // Sección critica
+            System.out.println("El avion: " + avion.getNombre() + " actualmente esta "+ avion.getOperacion() + " en la pista: "+ this.id);
+            try{
+                Thread.sleep((long) ((1000 / avion.getVelocidad()) * 1000));
+            }
+            catch(InterruptedException ex){
+                System.out.println("error");
+            }
+
+            this.mutex.release();
 
         } catch (InterruptedException e) {
             System.out.println("Error: "+e.getMessage());
         }
     }
-    public int getTiempoReservado(){
-        return this.tiempoReservado;
-    }
-
-    public void liberarPista(){
-        this.mutex.release();   
-    }
 
 }
+
