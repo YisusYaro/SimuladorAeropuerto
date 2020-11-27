@@ -40,7 +40,7 @@ public class AvionUI extends JPanel{
         
         
         if(avion.getOperacion() == "Despegar" && pista.getId()=="0"){
-            x=50;
+            x=30;
             y=300;
             operadorX=1;
             operadorY=-1;
@@ -56,7 +56,7 @@ public class AvionUI extends JPanel{
         }
         
         if(avion.getOperacion() == "Aterrizar" && pista.getId()=="0"){
-            x=400;
+            x=350;
             y=0;
             operadorX=-1;
             operadorY=1;

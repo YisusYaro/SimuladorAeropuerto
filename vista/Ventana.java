@@ -24,8 +24,6 @@ public class Ventana extends JFrame{
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
         
-        
-        
 
         this.panelOpciones = new PanelOpciones();
         this.panelAeropuerto = new PanelAeropuerto(this.panelOpciones);
