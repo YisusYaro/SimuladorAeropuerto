@@ -1,16 +1,20 @@
 package modelos;
+import controlador.*;
 
 import java.util.concurrent.*;
 
 public class Pista {
+    //atributos
     private final String id;
     private Semaphore mutex;
-    
-    public Pista(String id){
+    private Controlador controlador;
+    //constructor
+    public Pista(String id, Controlador controlador){
         this.id = id;
         this.mutex = new Semaphore(1);
+        this.controlador = controlador;
     }
-
+    //metodos
     public Semaphore getMutex(){
         return this.mutex;
     }
@@ -18,12 +22,12 @@ public class Pista {
     public void ocuparPista(Avion avion){
         //aún no se sabe donde aumentar
         try {
-            
             this.mutex.acquire();
 
             // Sección critica
             System.out.println("El avion: " + avion.getNombre() + " actualmente esta "+ avion.getOperacion() + " en la pista: "+ this.id);
             try{
+                //controlador.animar();
                 Thread.sleep((long) ((1000 / avion.getVelocidad()) * 1000));
             }
             catch(InterruptedException ex){
@@ -36,6 +40,5 @@ public class Pista {
             System.out.println("Error: "+e.getMessage());
         }
     }
-
 }
 

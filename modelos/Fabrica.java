@@ -1,14 +1,15 @@
 package modelos;
 
 public class Fabrica extends Thread{
+    //atributos
     private TorreControl torreControl;
     private double promedioAvionesPorMinuto;
-
+    //constructor
     public Fabrica(TorreControl torreControl, double promedioAvionesPorMinuto){
         this.torreControl = torreControl;
         this.promedioAvionesPorMinuto = promedioAvionesPorMinuto;
     }
-    
+    //metodo run que nos corre la tarea del hilo
     public void run(){
         while(true){
             //aleatorio
