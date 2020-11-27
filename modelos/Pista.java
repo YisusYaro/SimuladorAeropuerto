@@ -18,6 +18,10 @@ public class Pista {
     public Semaphore getMutex(){
         return this.mutex;
     }
+    
+    public String getId(){
+        return this.id;
+    }
 
     public void ocuparPista(Avion avion){
         //aún no se sabe donde aumentar
@@ -26,14 +30,8 @@ public class Pista {
 
             // Sección critica
             System.out.println("El avion: " + avion.getNombre() + " actualmente esta "+ avion.getOperacion() + " en la pista: "+ this.id);
-            try{
-                //controlador.animar();
-                Thread.sleep((long) ((1000 / avion.getVelocidad()) * 1000));
-            }
-            catch(InterruptedException ex){
-                System.out.println("error");
-            }
-
+            this.controlador.animar(avion, this);
+            System.out.println("libre al fin :D");
             this.mutex.release();
 
         } catch (InterruptedException e) {

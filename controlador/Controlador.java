@@ -13,11 +13,11 @@ public class Controlador {
         this.torreControl = new TorreControl(this);
         this.ventana = new Ventana(this);
         ventana.setVisible(true);
-        fabrica = new Fabrica(torreControl, 6.0);
+        fabrica = new Fabrica(torreControl, 20.0);
         fabrica.start();
     }
 
-    public void animar(){
-        this.ventana.animar();
+    public void animar(Avion avion, Pista pista){
+        this.ventana.animar(avion, pista);
     }
 }

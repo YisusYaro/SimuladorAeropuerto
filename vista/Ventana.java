@@ -2,6 +2,7 @@ package vista;
 import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import controlador.*;
+import modelos.*;
 
 public class Ventana extends JFrame{
     public static int WIDTH = 1000;
@@ -23,17 +24,20 @@ public class Ventana extends JFrame{
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
         
-        this.panelAeropuerto = new PanelAeropuerto();
-        this.add(this.panelAeropuerto, BorderLayout.CENTER);
+        
+        
 
         this.panelOpciones = new PanelOpciones();
+        this.panelAeropuerto = new PanelAeropuerto(this.panelOpciones);
+        this.add(this.panelAeropuerto, BorderLayout.CENTER);
         this.add(panelOpciones, BorderLayout.SOUTH);
 
     }
     public void setControlador(Controlador miControlador ){
         this.controlador = miControlador;
     }
-    public void animar(){
-        this.panelAeropuerto.animar();
+    public void animar(Avion avion, Pista pista){
+        this.panelOpciones.informarEstado(avion, pista);
+        this.panelAeropuerto.animar(avion, pista);
     }
 }
