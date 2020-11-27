@@ -31,10 +31,10 @@ public class PanelAeropuerto extends JPanel{
         super.paintComponent(g);
         g.drawImage(fondo,0,0,getWidth(),getHeight(),null);
     }
-    public void animar(Avion avion, Pista pista){
-        AvionUI avionUI = new AvionUI(panelOpciones);
+    public void animar(Avion avion, Pista pista, PanelOpciones panelOpciones){
+        AvionUI avionUI = new AvionUI();
         this.add(avionUI);
-        avionUI.animar(avion, pista);
-        avionUI=null;
+        avionUI.animar(avion, pista, panelOpciones);
+        //avionUI=null;
     }
 }

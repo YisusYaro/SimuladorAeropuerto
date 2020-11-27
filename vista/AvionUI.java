@@ -13,12 +13,10 @@ public class AvionUI extends JPanel{
     private Image fondo=null;
     private int x;
     private int y;
-    PanelOpciones panelOpciones;
     
-    AvionUI(PanelOpciones panelOpciones){
+    AvionUI(){
         this.x=0;
         this.y=0;
-        this.panelOpciones = panelOpciones;
     }
     
     @Override
@@ -28,10 +26,18 @@ public class AvionUI extends JPanel{
         this.setOpaque(false);
     }
     
-    public void animar(Avion avion, Pista pista){
+    public void animar(Avion avion, Pista pista, PanelOpciones panelOpciones){
         
         int operadorX=0;
         int operadorY=0;
+        
+        if(pista.getId()=="0"){
+            panelOpciones.informarEstado1(avion);
+        }
+        if(pista.getId()=="1"){
+            panelOpciones.informarEstado2(avion);
+        }   
+        
         
         if(avion.getOperacion() == "Despegar" && pista.getId()=="0"){
             x=50;
@@ -66,34 +72,35 @@ public class AvionUI extends JPanel{
         }
         
 
-        this.setBounds(x, y, 50, 50);
+        this.setBounds(x, y, 80, 80);
         long startTime = System.nanoTime();
         long endTime = System.nanoTime();
-        //System.out.println(endTime-startTime/1000000000);
+
         
         while((endTime-startTime)/1000000000 < 7){
             x+=operadorX;
             y+=operadorY;
-            this.setBounds(x, y, 50, 50);
+            this.setBounds(x, y, 80, 80);
             //System.out.println("animando"+x+" "+y);
-            endTime = System.nanoTime();
             
-             try{
+            
+            try{
                 
-                Thread.sleep((long) ((10 / avion.getVelocidad()) * 1000));
+                Thread.sleep((long) ((10 / avion.getVelocidad() ) * 1000));
             }
             catch(InterruptedException ex){
                 System.out.println("error");
             }
+            endTime = System.nanoTime();
         }
+        
         this.setBounds(1000, 1000, 50, 50);
+        
         if(pista.getId()=="0"){
-            panelOpciones.getPistaInformacion1().setText("Pista 1 libre");
+            panelOpciones.liberarPista1(avion);
         }
-        else{
-            panelOpciones.getPistaInformacion2().setText("Pista 2 libre");
-        }
-        
-        
+        if(pista.getId()=="1"){
+            panelOpciones.liberarPista2(avion);
+        }  
     }
 }

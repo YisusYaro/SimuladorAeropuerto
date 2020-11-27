@@ -13,7 +13,7 @@ public class TorreControl {
         this.controlador = controlador;
         pistas =  new Pista[2];
         pistas[0] = new Pista("0", controlador); 
-        pistas[1] = new Pista("1",controlador);
+        pistas[1] = new Pista("1", controlador);
     }
 
     public void solicitarPista(Avion avion) {

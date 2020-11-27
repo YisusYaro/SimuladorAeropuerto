@@ -31,7 +31,7 @@ public class Pista {
             // Sección critica
             System.out.println("El avion: " + avion.getNombre() + " actualmente esta "+ avion.getOperacion() + " en la pista: "+ this.id);
             this.controlador.animar(avion, this);
-            System.out.println("libre al fin :D");
+            System.out.println("libre al fin :D : " + avion.getNombre() + " actualmente esta "+ avion.getOperacion() + " en la pista: "+ this.id);
             this.mutex.release();
 
         } catch (InterruptedException e) {

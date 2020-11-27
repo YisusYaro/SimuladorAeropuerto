@@ -36,8 +36,8 @@ public class Ventana extends JFrame{
     public void setControlador(Controlador miControlador ){
         this.controlador = miControlador;
     }
-    public void animar(Avion avion, Pista pista){
-        this.panelOpciones.informarEstado(avion, pista);
-        this.panelAeropuerto.animar(avion, pista);
+    public void animar(Avion avion, Pista pista){        
+        this.panelAeropuerto.animar(avion, pista, panelOpciones);
+        
     }
 }

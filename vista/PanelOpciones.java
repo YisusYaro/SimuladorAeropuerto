@@ -36,15 +36,21 @@ public class PanelOpciones extends JPanel{
     public JLabel getPistaInformacion2(){
         return this.pistaInformacion2;
     }
-  
 
-    public void informarEstado(Avion avion, Pista pista) {
-        if(pista.getId()=="0"){
-            this.pistaInformacion1.setText("Pista 1 esta siendo utilizada por el avión "+avion.getNombre() + " que realiza la acción de " +avion.getOperacion());
-        }
-        else{
-            this.pistaInformacion2.setText("Pista 2 esta siendo utilizada por el avión "+avion.getNombre() + " que realiza la acción de " +avion.getOperacion());
-        }
+    public void informarEstado1(Avion avion) {
+        this.pistaInformacion1.setText("Pista 1: avión "+avion.getNombre() + " que realiza la acción de " +avion.getOperacion());
+    }
+    
+    public void informarEstado2(Avion avion) {
+        this.pistaInformacion2.setText("Pista 2: avión "+avion.getNombre() + " que realiza la acción de " +avion.getOperacion());
+    }
+    
+    public void liberarPista1(Avion avion) {
+        this.pistaInformacion1.setText("Pista 1 libre");
+    }
+    
+    public void liberarPista2(Avion avion) {
+        this.pistaInformacion2.setText("Pista 2 libre");
     }
   
   
